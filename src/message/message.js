@@ -1,0 +1,16 @@
+exports.messageList = {
+  M001: "User does not exist",
+  M002: "Incorrect password",
+  M003: "Login successful!",
+  M004: "Email already exists",
+  M005: "Registration failed.",
+  M006: "Registration successful!",
+  M007: "Post Created successful!",
+  M008: "Something went wrong",
+  M009: "Post not found",
+  M010: "Successfully updated",
+  M011: "Successfully deleted",
+  M012: "Successfully fetched",
+  M013: "Please try again!",
+  M014: "Successfully added comment!",
+};
