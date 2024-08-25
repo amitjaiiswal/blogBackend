@@ -91,21 +91,21 @@ exports.createBlogPostComment = async (comment, userId, blogId) => {
 exports.getAllBlogPostsForUserForComment = async (blogId) => {
   const query = `
     SELECT 
-    b.title,
-    b.content,
-    array_agg(
+      b.title,
+      b.content,
+      array_agg(
         jsonb_build_object(
-            'comment', c.comment,
-            'name', u.name,
-            'created_at', c.created_at,
-            'userId', c.userid 
+          'comment', c.comment,
+          'name', u.name,
+          'created_at', c.created_at,
+          'userId', c.userid 
         )
-    ) AS comments
-  FROM "comments" AS c
-  INNER JOIN blogPosts AS b ON c.blogid = b.id
-  INNER JOIN userdetail AS u ON c.userid = u.id
-  WHERE c.blogid = $1
-  GROUP BY b.title, b.content
+      ) AS comments
+    FROM blogPosts AS b
+    LEFT JOIN comments AS c ON c.blogid = b.id
+    LEFT JOIN userdetail AS u ON c.userid = u.id
+    WHERE b.id = $1
+    GROUP BY b.title, b.content
   `;
 
   try {
