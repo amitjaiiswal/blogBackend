@@ -4,5 +4,5 @@ exports.credentials = {
   database: process.env.POSTGRES_DATABASE,
   password: process.env.POSTGRES_PASSWORD,
   port: process.env.POSTGRES_PORT,
-  JWT_SECRET: process.env.JWT_SECRET,
+  ssl: { rejectUnauthorized: false },
 };
